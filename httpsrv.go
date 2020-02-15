@@ -36,7 +36,7 @@ func httpServe() {
 		}
 
 		n, err := strconv.Atoi(nstr)
-		if err != nil {
+		if err != nil || n <= 0{
 			http.Error(w, "invalid param", http.StatusBadRequest)
 			return
 		}
