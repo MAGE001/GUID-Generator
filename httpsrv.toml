@@ -1,0 +1,14 @@
+Listen    = ":18080"
+
+NodeIdKey = "GUID:SNOWFLAKE:CURRENT-NODE-ID"
+
+Generator = "snowflake" # snowflake or random
+
+[Redis]
+Addr                = "127.0.0.1:6379"
+Db                  = 0
+Poolsize            = 10
+DialReadTimeout     = 3
+DialWriteTimeout    = 3
+DialKeepAlive       = 30
+IdleTimeout         = 300
