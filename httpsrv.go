@@ -8,10 +8,10 @@ import (
 	"strconv"
 
 	"github.com/GUID-Generator/conf"
-	"github.com/GUID-Generator/snowflake"
-	"github.com/GUID-Generator/storage"
 	"github.com/GUID-Generator/generator"
 	"github.com/GUID-Generator/random"
+	"github.com/GUID-Generator/snowflake"
+	"github.com/GUID-Generator/storage"
 )
 
 func main() {
@@ -36,7 +36,7 @@ func httpServe() {
 		}
 
 		n, err := strconv.Atoi(nstr)
-		if err != nil || n <= 0{
+		if err != nil || n <= 0 {
 			http.Error(w, "invalid param", http.StatusBadRequest)
 			return
 		}

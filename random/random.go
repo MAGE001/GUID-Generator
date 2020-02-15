@@ -2,8 +2,8 @@ package random
 
 import (
 	"crypto/rand"
-	"log"
 	"encoding/binary"
+	"log"
 )
 
 const (
@@ -17,7 +17,7 @@ type random struct {
 }
 
 // NewRandomGenerator return a random generator, generate ids by reading /dev/urandom
-func NewRandomGenerator () *random {
+func NewRandomGenerator() *random {
 	r := &random{
 		n:      8,
 		buffer: make(chan int64, 2^16),
@@ -43,8 +43,8 @@ func (r *random) start() {
 				log.Printf("read random failed, err: %s\n", err)
 				continue
 			}
-			for i := 0; i < readSize; i+=r.n {
-				r.buffer <- int64(binary.LittleEndian.Uint64(buffer[i:i+r.n]))
+			for i := 0; i < readSize; i += r.n {
+				r.buffer <- int64(binary.LittleEndian.Uint64(buffer[i : i+r.n]))
 			}
 		}
 	}()
