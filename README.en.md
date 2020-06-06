@@ -1,10 +1,13 @@
-[Language: [Engilsh](./README.en.md)]
+[Language: [Original](./README.en.md)]
+
+DISCLAIMER: Translated from Original using Google Translate.
+
 # GUID-Generator
 A distributed global unique id generator with two implementation: `twitter snowflake` and `/dev/urandom`.
 
 ## (1) twitter snowflake
 
-#### ID结构
+#### ID Structure
 
 ```
 /*
@@ -16,16 +19,17 @@ A distributed global unique id generator with two implementation: `twitter snowf
 ```
 
 
-#### 优点
+#### Advantages
 
-- 高性能
-- 分布式
-- 解决系统时钟回拨问题
+- High Performance
+- Distributed
+- Solves the problem of system clock callback
 
-#### 缺点
+#### Disadvantages
 
-- 整个分布式节点支持重启约100W次（2^20）
-- 生成ID中时间可能滞后（请求qps较低时）或超前（qps超过2^15/s时）于系统当前时间，因此不适用于希望通过ID反映业务时间的场景
+- The entire distributed node supports restarting about 100W times（2^20）
+- Time may lag in ID generation（When the request qps is low）Or ahead
+（qps exceeded 2^15/s time）current system time，therefore, it is not suitable for scenarios that want to reflect business time by ID
 
 #### benchmark
 
@@ -44,23 +48,24 @@ ok  	github.com/GUID-Generator/snowflake	8.886s
 
 #### 使用
 
-snowflake generator使用redis存储worker node id，如果想换成其它存储如zookeeper、mysql，实现Storager即可接口。
+snowflake generator uses redis storage worker node id，If you want to change the storage such as zookeeper, mysql, achive Storager ready interface。
 
-1. 安装redis
-2. 修改配置文件
+1. Install Redis
+2. Modify configuration file
+
 ```
-NodeIdKey = "GUID:SNOWFLAKE:CURRENT-NODE-ID" # 存储worker node id的key
+NodeIdKey = "GUID:SNOWFLAKE:CURRENT-NODE-ID" # storage worker node id of key
 
 Generator = "snowflake" # snowflake or random
 
 [Redis]
-Addr                = "127.0.0.1:6379"  # redis地址
+Addr                = "127.0.0.1:6379"  # redis address
 ```
-3. 启动服务
+3. Start the service
 ```
 $ ./httpsrv -conf ./httpserv.toml
 ```
-4. 测试
+4. Test
 ```
 $ curl http://127.0.0.1:18080/ids?n=3
 {"ids":[134423817710829569,134423817710829570,134423817710829571]}
@@ -68,16 +73,16 @@ $ curl http://127.0.0.1:18080/ids?n=3
 
 ## (2) Linux /dev/urandom
 
-/dev/urandom可以用来生成密码学上的安全随机数。
+/dev/urandom - It can be used to generate cryptographically secure random numbers.
 
-#### 优点
+#### Advantages
 
-- 分布式
-- 不需要外部存储辅助
+- Distributed
+- No external storage service required
 
-#### 缺点
+#### Disadvantages
 
-- 由于存在文件I/O，性能与snowflake相差一个数量级
+- Due to the existence of files I/O，Performance and snowflake difference 一orders of magnitude
 
 #### benchmark
 
@@ -94,17 +99,17 @@ PASS
 ok  	github.com/GUID-Generator/random	7.151s
 ```
 
-#### 使用
+#### Use
 
-1. 修改配置文件
+1. Modify configuration file
 ```
 Generator = "random" # snowflake or random
 ```
-2. 启动服务
+2. Start service
 ```
 $ ./httpsrv -conf ./httpserv.toml
 ```
-3. 测试
+3. Test
 ```
 $ curl http://127.0.0.1:18080/ids?n=3
 {"ids":[-7251799059149900519,8370896501513088158,7343472816840825557]}
