@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/GUID-Generator/conf"
+	"GUID-Generator/conf"
 	"github.com/gomodule/redigo/redis"
 )
 

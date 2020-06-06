@@ -7,11 +7,11 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/GUID-Generator/conf"
-	"github.com/GUID-Generator/generator"
-	"github.com/GUID-Generator/random"
-	"github.com/GUID-Generator/snowflake"
-	"github.com/GUID-Generator/storage"
+	"GUID-Generator/conf"
+	"GUID-Generator/generator"
+	"GUID-Generator/random"
+	"GUID-Generator/snowflake"
+	"GUID-Generator/storage"
 )
 
 func main() {
