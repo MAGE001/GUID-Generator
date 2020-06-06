@@ -1,4 +1,5 @@
-# GUID-Generator [Original](./README.en.md)
+[Language: [Original](./README.en.md)]
+# GUID-Generator
 A distributed global unique id generator with two implementation: `twitter snowflake` and `/dev/urandom`.
 
 ## (1) twitter snowflake
